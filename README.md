@@ -1,8 +1,7 @@
 # Dejunk
-Application to unsubscribe from junk emails in gmail. Most done for getting to work with the Gmail API
+Application to unsubscribe from junk emails in Gmail. Most done for getting to work with the Gmail API
 
-Note: Was written using the Windows Subsystem for Linux using Ubuntu. Needed a virtual environment, and was just created with source venv/bin/activate
-
+Note: It was written using the Windows subsystem for Linux using Ubuntu and on MacOS. Virtual environment was used for dependencies.
 Dependencies 
 --------------------
 Run the follow commands in the terminal to use the application
