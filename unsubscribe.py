@@ -69,7 +69,7 @@ def fetch_email_ids(query_string, labels=None):
     '''
     Search emails that match the specified query string, and fetch their ids.
     '''
-
+    
     # TODO Figure out the logic from the practice delete.py file
     # It should be relatively similar. We need the ID's so we can 
     # then go through the emails and find the unsub link
