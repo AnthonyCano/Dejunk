@@ -59,14 +59,21 @@ def get_user_input():
         else:
             print("Restarting process...\n")  # Allow retrying without exiting
 
-get_user_input()
+# string = get_user_input()
+# print(string)
 
 # Hard coded query for testing
-query_string = '"unsubscribe" AND category:promotions AND newer_than:90d AND from:ticketmaster.com'
+# query_string = '"unsubscribe" AND category:promotions AND newer_than:90d AND from:ticketmaster.com'
 
-# Call the search function in the delete script to fetch the email ids
-# that match the query_string
-email_results = search_emails(query_string)
-print(email_results)
+def fetch_email_ids(query_string, labels=None):
+    '''
+    Search emails that match the specified query string, and fetch their ids.
+    '''
+
+    # TODO Figure out the logic from the practice delete.py file
+    # It should be relatively similar. We need the ID's so we can 
+    # then go through the emails and find the unsub link
+    return 
+
 
 
