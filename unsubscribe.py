@@ -24,16 +24,42 @@ def get_user_input():
     Returns: The querey string that will then be used to search for.
     '''
 
+    # For now I just want to be able to use the default gmail categories
     valid_categories = ["primary", "promotions", "social", "updates", "forums"]
     
     while True:
-        # Querey string for users to specify what they want to unsub from 
-        input_category = input("Please enter the email category you want to unsubcribe from. For example -> promotions:").strip().lower()
+        # Get and validate category
+        input_category = input("Please enter the email category you want to unsubscribe from (e.g., promotions): ").strip().lower()
         if input_category not in valid_categories:
-            print(f"You selcted {input_category} which is not a valid category")
-            print("Please select from one of the five valid categories: primary, promotions, social, updates, forums")
-            continue
-        input_sender =  input("Please enter the comapny name or sender of which you want to unsubscribe form. For example -> From: Chipotle:")
+            print(f"You selected '{input_category}', which is not a valid category.")
+            print("Please select from one of the five valid categories: primary, promotions, social, updates, forums.")
+            continue  # Restart from category input
+        
+
+        while True:
+            input_sender = input("Please enter the company name or sender you want to unsubscribe from (e.g., Dejunk): ").strip()
+
+            if not input_sender:
+                print("Sender cannot be empty. Please enter a valid sender.")
+                continue  
+            
+            if "from" in input_sender.lower():
+                print(f"You entered '{input_sender}'. Please ensure you only enter the sender name (e.g., 'Dejunk').")
+                continue  
+            
+            break  # Valid sender input, exit sender loop
+
+        # Construct the query string
+        full_string = f"category:{input_category} from:{input_sender}"
+        print(f"You will now unsubscribe from: {full_string}.")
+        
+        ans = input("If this is correct, please type 'yes': ").strip().lower()
+        if ans == "yes":
+            return full_string
+        else:
+            print("Restarting process...\n")  # Allow retrying without exiting
+
+get_user_input()
 
 # Hard coded query for testing
 query_string = '"unsubscribe" AND category:promotions AND newer_than:90d AND from:ticketmaster.com'
